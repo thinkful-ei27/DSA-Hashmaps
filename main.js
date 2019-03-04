@@ -72,18 +72,17 @@ function algorithmGrouper(strArray) {
     const alphabetString =
       currentWord.toLowerCase().split('').sort().join('');
     //  if map.has(key : alphstr?  value: indexOfOutputarray )
-    if (!Anagram.has(alphabetString)){
+    if (Anagram.has(alphabetString)) {
+      let index = Anagram.get(alphabetString);
+      // outputArray[value].push( input array[i])
+      outputArray[index].push(currentWord);
+    } else {
       const matchingAnagramsArray = [];
       matchingAnagramsArray.push(currentWord);
       outputArray.push(matchingAnagramsArray);
       Anagram.set(alphabetString, (outputArray.length - 1));
     }
-    if (Anagram.has(alphabetString)) {
-      let index = Anagram.get(alphabetString);
-      // outputArray[value].push( input array[i])
-      outputArray[index].push(currentWord);
-    } 
-    console.log(outputArray);
+    // console.log(outputArray);
   }
   return outputArray;
 }

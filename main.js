@@ -1,12 +1,12 @@
 const HashMap = require('./hashMap');
 
 function main1() {
-  // const lor = new HashMap();
-  // lor.set('Hobbit', 'Bilbo');
-  // lor.set('Hobbit', 'Frodo');
-  // lor.set('Wizard', 'Gandolf');
-  // lor.set('Human', 'Aragon');
-  // lor.set('Elf', 'Legolas');
+  const lor = new Map();
+  lor.set('Hobbit', 'Bilbo');
+  lor.set('Hobbit', 'Frodo');
+  lor.set('Wizard', 'Gandolf');
+  lor.set('Human', 'Aragon');
+  lor.set('Elf', 'Legolas');
   // lor.set('Maiar', 'The Necromancer');
   // lor.set('Maiar', 'Sauron');
   // lor.set('RingBearer', 'Gollum');
@@ -14,7 +14,11 @@ function main1() {
   // lor.set('HalfElven', 'Arwen');
   // lor.set('Ent', 'Treebeard');
   // console.log(lor.get('Hobbit')); //Sauron
-}
+
+  // console.log(Object.values(lor));
+} main1()
+
+
 
 function palindromeFinder(str) {
   //Create a map
@@ -49,4 +53,50 @@ function palindromeFinder(str) {
 }
 
 const str = 'aaaa';
-console.log(palindromeFinder(str));
+// console.log(palindromeFinder(str));
+
+/*====== Anagram grouping =====*/
+
+// if the two + words are anagrams, add to an array,
+//  input: array of strings
+// input: strArray
+
+function algorithmGrouper(strArray) {
+
+  const Anagram = new Map();
+  let outputArray = [];
+  //  loop over array
+  for (let i = 0; i < strArray.length; i++) {
+    let currentWord = strArray[i];
+    // cosnt alphabetixedstr tolowercase split sort join
+    const alphabetString =
+      currentWord.toLowerCase().split('').sort().join('');
+    //  if map.has(key : alphstr?  value: indexOfOutputarray )
+    if (!Anagram.has(alphabetString)){
+      const matchingAnagramsArray = [];
+      matchingAnagramsArray.push(currentWord);
+      outputArray.push(matchingAnagramsArray);
+      Anagram.set(alphabetString, (outputArray.length - 1));
+    }
+    if (Anagram.has(alphabetString)) {
+      let index = Anagram.get(alphabetString);
+      // outputArray[value].push( input array[i])
+      outputArray[index].push(currentWord);
+    } 
+    console.log(outputArray);
+  }
+  return outputArray;
+}
+// key : alphabetString
+// value: index of matchinganagramsarray in output array
+
+// else map.set(newAlphstr: value)
+// [[    ],   [  ] ]
+// Map.set()
+// const  outputArray = [ ]
+//
+
+
+const strArr = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
+
+console.log(algorithmGrouper(strArr));

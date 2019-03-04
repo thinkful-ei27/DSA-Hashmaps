@@ -1,7 +1,7 @@
 const HashMap = require('./hashMap');
 
 function main1() {
-  const lor = new Map();
+  const lor = new HashMap();
   lor.set('Hobbit', 'Bilbo');
   lor.set('Hobbit', 'Frodo');
   lor.set('Wizard', 'Gandolf');
@@ -15,10 +15,9 @@ function main1() {
   // lor.set('Ent', 'Treebeard');
   // console.log(lor.get('Hobbit')); //Sauron
 
-  // console.log(Object.values(lor));
-} main1()
-
-
+  console.log(lor);
+}
+main1();
 
 function palindromeFinder(str) {
   //Create a map
@@ -62,15 +61,17 @@ const str = 'aaaa';
 // input: strArray
 
 function algorithmGrouper(strArray) {
-
   const Anagram = new Map();
   let outputArray = [];
   //  loop over array
   for (let i = 0; i < strArray.length; i++) {
     let currentWord = strArray[i];
     // cosnt alphabetixedstr tolowercase split sort join
-    const alphabetString =
-      currentWord.toLowerCase().split('').sort().join('');
+    const alphabetString = currentWord
+      .toLowerCase()
+      .split('')
+      .sort()
+      .join('');
     //  if map.has(key : alphstr?  value: indexOfOutputarray )
     if (Anagram.has(alphabetString)) {
       let index = Anagram.get(alphabetString);
@@ -80,7 +81,8 @@ function algorithmGrouper(strArray) {
       const matchingAnagramsArray = [];
       matchingAnagramsArray.push(currentWord);
       outputArray.push(matchingAnagramsArray);
-      Anagram.set(alphabetString, (outputArray.length - 1));
+      Anagram.set(alphabetString, outputArray.length - 1);
+      console.log(Anagram);
     }
     // console.log(outputArray);
   }
@@ -95,7 +97,6 @@ function algorithmGrouper(strArray) {
 // const  outputArray = [ ]
 //
 
-
 const strArr = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
 
-console.log(algorithmGrouper(strArr));
+// console.log(algorithmGrouper(strArr));

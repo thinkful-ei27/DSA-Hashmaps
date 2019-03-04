@@ -7,11 +7,11 @@ class HashMap {
     this._capacity = initialCapacity;
     this._deleted = 0;
   }
-  
-  get(key){
+
+  get(key) {
     const index = this._findSlot(key);
-    const slot  = this._slots[index];
-    if(slot === undefined){
+    const slot = this._slots[index];
+    if (slot === undefined) {
       throw new Error('key error, cannot get');
     }
     return slot.value;
@@ -57,13 +57,13 @@ class HashMap {
     for (let i = start; i < start + this._capacity; i++) {
       const index = i % this._capacity;
       const slot = this._slots[index];
-      if (slot === undefined || slot.key === key) {
+      if (slot === undefined || (slot.key === key && !slot.deleted)) {
         return index;
       }
     }
   }
 
- 
+
 
   _resize(size) {
     const oldSlots = this._slots;

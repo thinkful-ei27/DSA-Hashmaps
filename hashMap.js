@@ -12,9 +12,16 @@ class HashMap {
   get(key) {
     const index = this._findSlot(key);
     const slot = this._slots[index];
+   
+
+    //  check for key value
+
+
+    //  else travesrse list/ 
     if (slot === undefined) {
       throw new Error('key error, cannot get');
     }
+
     return slot.value;
   }
 
@@ -23,11 +30,15 @@ class HashMap {
       this._resize(this._capacity * HashMap.SIZE_RATIO);
     }
     const index = this._findSlot(key);
-    this._slots[index] = {
+
+    const slotList = new LinkedList();
+    slotList.insertLast({
       key,
       value,
       deleted: false
-    };
+    });
+
+    this._slots[index] = slotList;
     this.length++;
   }
   remove(key) {
@@ -58,10 +69,15 @@ class HashMap {
     let index = start % this._capacity;
     let slot = this._slots[index];
 
-    if (slot === undefined) {
-      return index;
-    } else if (slot.key === key && !slot.deleted) {
-    }
+    // if (slot === undefined) {
+    //   return index;
+    // }
+    // if (slot) {
+    return index;
+
+
+    // else if (slot.key === key && !slot.deleted) {
+    // }
   }
 
   _resize(size) {

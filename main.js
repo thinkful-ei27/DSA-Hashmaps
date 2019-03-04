@@ -7,15 +7,15 @@ function main1() {
   lor.set('Wizard', 'Gandolf');
   lor.set('Human', 'Aragon');
   lor.set('Elf', 'Legolas');
-  // lor.set('Maiar', 'The Necromancer');
-  // lor.set('Maiar', 'Sauron');
-  // lor.set('RingBearer', 'Gollum');
-  // lor.set('LadyOfLight', 'Galadriel');
-  // lor.set('HalfElven', 'Arwen');
-  // lor.set('Ent', 'Treebeard');
+  lor.set('Maiar', 'The Necromancer');
+  lor.set('Maiar', 'Sauron');
+  lor.set('RingBearer', 'Gollum');
+  lor.set('LadyOfLight', 'Galadriel');
+  lor.set('HalfElven', 'Arwen');
+  lor.set('Ent', 'Treebeard');
   // console.log(lor.get('Hobbit')); //Sauron
 
-  console.log(lor);
+  console.log(JSON.stringify(lor, null , 2));
 }
 main1();
 
